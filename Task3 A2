@@ -129,4 +129,22 @@ public:
         return new AddInstruction(r, s, t);
     }
 };
+class LoadInstruction : public Instruction {
+private:
+    int RegisterR;
+    int MemoryAddress;
 
+public:
+    LoadInstruction(int r, int addr) : RegisterR(r), MemoryAddress(addr) {}
+
+    void Execute(Register* registers, Memory* memory, Screen* screen) override {
+        int value = memory->ReadMemory(MemoryAddress);
+        registers[RegisterR].SetValue(value);
+    }
+
+    Instruction* Translate(std::string input) override {
+        int r, addr;
+        std::istringstream(input) >> r >> addr;
+        return new LoadInstruction(r, addr);
+    }
+};
