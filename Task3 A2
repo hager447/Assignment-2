@@ -88,3 +88,22 @@ public:
         return new HaltInstruction();
     }
 };
+class MoveInstruction : public Instruction {
+private:
+    int RegisterR;
+    int RegisterS;
+
+public:
+    MoveInstruction(int r, int s) : RegisterR(r), RegisterS(s) {}
+
+    void Execute(Register* registers, Memory* memory, Screen* screen) override {
+        int value = registers[RegisterR].GetValue();
+        registers[RegisterS].SetValue(value);
+    }
+
+    Instruction* Translate(std::string input) override {
+        int r, s;
+        std::istringstream(input) >> r >> s;
+        return new MoveInstruction(r, s);
+    }
+};
