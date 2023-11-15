@@ -1,0 +1,10 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+
+const int NUM_REGISTERS = 8;
+
+class Register {
+private:
+    int value;
