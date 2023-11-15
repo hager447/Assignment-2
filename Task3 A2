@@ -107,3 +107,26 @@ public:
         return new MoveInstruction(r, s);
     }
 };
+class AddInstruction : public Instruction {
+private:
+    int RegisterR;
+    int RegisterS;
+    int RegisterT;
+
+public:
+    AddInstruction(int r, int s, int t) : RegisterR(r), RegisterS(s), RegisterT(t) {}
+
+    void Execute(Register* registers, Memory* memory, Screen* screen) override {
+        int valueS = registers[RegisterS].GetValue();
+        int valueT = registers[RegisterT].GetValue();
+        int sum = valueS + valueT;
+        registers[RegisterR].SetValue(sum);
+    }
+
+    Instruction* Translate(std::string input) override {
+        int r, s, t;
+        std::istringstream(input) >> r >> s >> t;
+        return new AddInstruction(r, s, t);
+    }
+};
+
