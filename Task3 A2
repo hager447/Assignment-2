@@ -253,4 +253,12 @@ void DisplayStatus() {
             ExecuteNextInstruction();
         }
     }
+int main() {
+    Machine machine;
+    machine.LoadProgramFromFile("program.txt");
+    machine.RunProgram();
+    machine.DisplayStatus();
+
+    return 0;
+}
 };
