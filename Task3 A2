@@ -237,3 +237,10 @@ ublic:
             // Handle the error as needed.
         }
     }
+void ExecuteNextInstruction() {
+        if (PC < Program.size()) {
+            Instruction* instruction = Program[PC];
+            instruction->Execute(registers, &memory, &screen);
+            PC++;
+        }
+    }
