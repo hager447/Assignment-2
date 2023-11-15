@@ -44,6 +44,16 @@ public:
     void AddToScreenBuffer(const std::string& output) {
         screenBuffer += output;
     }
+class Instruction {
+public:
+    virtual void Execute(Register* registers, Memory* memory, Screen* screen) = 0;
+    virtual Instruction* Translate(std::string input) = 0;
+};
+
+class JumpInstruction : public Instruction {
+private:
+    int RegisterR;
+    int MemoryAddress;
 
     void DisplayScreen() {
         std::cout << screenBuffer << std::endl;
