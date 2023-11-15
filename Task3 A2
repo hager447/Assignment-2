@@ -174,3 +174,66 @@ private:
     Memory memory;
     Screen screen;
     std::vector<Instruction*> Program;
+ublic:
+    void LoadProgramFromFile(const std::string& filename) {
+        std::ifstream file(filename);
+        if (file.is_open()) {
+            std::string line;
+            while (std::getline(file, line)) {
+                std::istringstream iss(line);
+                int instructionType;
+                iss >> instructionType;
+
+                if (instructionType == 1) {
+                    int r, addr;
+                    if (iss >> r >> addr) {
+                        Program.push_back(new JumpInstruction(r, addr));
+                    } else {
+                        std::cerr << "Error: Invalid Jump instruction format in line: " << line << std::endl;
+                        // Handle the error as needed.
+                    }
+                } else if (instructionType == 2) {
+                    int r, s;
+                    if (iss >> r >> s) {
+                        Program.push_back(new MoveInstruction(r, s));
+                    } else {
+                        std::cerr << "Error: Invalid Move instruction format in line: " << line << std::endl;
+                        // Handle the error as needed.
+                    }
+                } else if (instructionType == 3) {
+                    int r, s, t;
+                    if (iss >> r >> s >> t) {
+                        Program.push_back(new AddInstruction(r, s, t));
+                    } else {
+                        std::cerr << "Error: Invalid Add instruction format in line: " << line << std::endl;
+                        // Handle the error as needed.
+                    }
+                } else if (instructionType == 4) {
+                    int r, addr;
+                    if (iss >> r >> addr) {
+                        Program.push_back(new LoadInstruction(r, addr));
+                    } else {
+                        std::cerr << "Error: Invalid Load instruction format in line: " << line << std::endl;
+                        // Handle the error as needed.
+                    }
+                } else if (instructionType == 5) {
+                    int r, addr;
+                    if (iss >> r >> addr) {
+                        Program.push_back(new StoreInstruction(r, addr));
+                    } else {
+                        std::cerr << "Error: Invalid Store instruction format in line: " << line << std::endl;
+                        // Handle the error as needed.
+                    }
+                } else if (instructionType == 12) {
+                    Program.push_back(new HaltInstruction());
+                } else {
+                    std::cerr << "Error: Unknown instruction type in line: " << line << std::endl;
+                    // Handle the error as needed.
+                }
+            }
+            file.close();
+        } else {
+            std::cerr << "Error: Unable to open the file: " << filename << std::endl;
+            // Handle the error as needed.
+        }
+    }
