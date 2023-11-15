@@ -76,3 +76,15 @@ public:
         return new JumpInstruction(r, addr);
     }
 };
+class HaltInstruction : public Instruction {
+public:
+    void Execute(Register* registers, Memory* memory, Screen* screen) override {
+        // Implement the halt operation to stop program execution
+    }
+
+    Instruction* Translate(std::string input) override {
+        // Implement translation of the Halt instruction
+        // This instruction has no additional parameters
+        return new HaltInstruction();
+    }
+};
