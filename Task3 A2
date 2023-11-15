@@ -36,3 +36,16 @@ int ReadMemory(int location) {
         }
     }
 };
+class Screen {
+private:
+    std::string screenBuffer;
+
+public:
+    void AddToScreenBuffer(const std::string& output) {
+        screenBuffer += output;
+    }
+
+    void DisplayScreen() {
+        std::cout << screenBuffer << std::endl;
+    }
+};
