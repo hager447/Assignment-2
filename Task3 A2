@@ -59,3 +59,20 @@ private:
         std::cout << screenBuffer << std::endl;
     }
 };
+public:
+    JumpInstruction(int r, int addr) : RegisterR(r), MemoryAddress(addr) {}
+
+    void Execute(Register* registers, Memory* memory, Screen* screen) override {
+        int valueR = registers[RegisterR].GetValue();
+        if (valueR == 0) {
+            // Set the program counter (PC) to the specified MemoryAddress
+            registers[RegisterR].SetValue(MemoryAddress);
+        }
+    }
+
+    Instruction* Translate(std::string input) override {
+        int r, addr;
+        std::istringstream(input) >> r >> addr;
+        return new JumpInstruction(r, addr);
+    }
+};
