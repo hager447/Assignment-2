@@ -167,3 +167,10 @@ public:
         return new StoreInstruction(r, addr);
     }
 };
+class Machine {
+private:
+    int PC;
+    Register registers[NUM_REGISTERS];
+    Memory memory;
+    Screen screen;
+    std::vector<Instruction*> Program;
