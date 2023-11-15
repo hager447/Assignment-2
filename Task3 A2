@@ -244,3 +244,13 @@ void ExecuteNextInstruction() {
             PC++;
         }
     }
+void DisplayStatus() {
+        // Implement status display, including registers, memory, and screen
+    }
+
+    void RunProgram() {
+        while (PC < Program.size()) {
+            ExecuteNextInstruction();
+        }
+    }
+};
