@@ -23,3 +23,16 @@ private:
     std::vector<int> memoryStorage;
 
 public:
+int ReadMemory(int location) {
+        if (location >= 0 && location < memoryStorage.size()) {
+            return memoryStorage[location];
+        }
+        return 0; // Default value for out-of-range memory location
+    }
+
+    void WriteMemory(int location, int value) {
+        if (location >= 0 && location < memoryStorage.size()) {
+            memoryStorage[location] = value;
+        }
+    }
+};
