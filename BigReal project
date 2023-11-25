@@ -9,3 +9,17 @@ BigReal::BigReal( double x ) {
     isNegative = temp.isNegative ;
     INPUT = temp.INPUT ;
 }
+
+BigReal::BigReal(string realNumber) {
+    L_R_Strip(realNumber) ;
+    if ( realNumber.front() == '-' )
+        isNegative = true ;
+    else
+        isNegative = false ;
+    if ( realNumber.front() == '-' || realNumber.front() == '+' )
+        INPUT = realNumber.substr(1) ;
+    else
+        INPUT = realNumber ;
+    if (INPUT.find('.') == -1 )
+        INPUT.push_back('.') ;
+}
