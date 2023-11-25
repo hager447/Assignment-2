@@ -1,0 +1,11 @@
+#include "BigReal.h"
+#include <bits/stdc++.h>
+using namespace std;
+
+// constructors
+
+BigReal::BigReal( double x ) {
+    BigReal temp(to_string(x)) ;
+    isNegative = temp.isNegative ;
+    INPUT = temp.INPUT ;
+}
