@@ -59,4 +59,41 @@ pair<string, string> BigReal::append_zero( string num1 , string num2 ) {
     num2 =  (string(app2_l , '0') + num2 + string(  app2_r , '0' )) ;
     return { num1 , num2 } ;
 }
+stream &operator<<(ostream &out, const BigReal &num) {
+    if ( num.isNegative ) cout << '-' ;
+    if ( num.INPUT.back() == '.' )
+        cout << num.INPUT.substr(0 , num.INPUT.size() - 1 ) ;
+    else
+        cout << num.INPUT ;
+    return out ;
+}
+
+bool BigReal::operator==(const BigReal &anotherReal) {
+    return ( isNegative == isNegative && INPUT == anotherReal.INPUT ) ;
+}
+
+bool BigReal::operator>(const BigReal &anotherReal) {
+    if ( anotherReal.isNegative && !isNegative ){
+        return true ;
+    }
+    if ( !anotherReal.isNegative && isNegative ){
+        return false ;
+    }
+    pair<string,string> cmp = append_zero( INPUT , anotherReal.INPUT ) ;
+    if ( anotherReal.isNegative == isNegative && isNegative ){
+        if ( cmp.first.compare(cmp.second ) < 0 ){
+            return true ;
+        } else {
+            return false ;
+        }
+    }
+    if ( anotherReal.isNegative == isNegative && !isNegative){
+        if ( cmp.first.compare(cmp.second ) > 0 ) {
+            return true ;
+        } else {
+            return false ;
+        }
+    }
+}
+
 
