@@ -3,3 +3,4 @@
 #include "BigReal.cpp"
 
 int main(){
+BigReal n1("99999.99999") , n2("-0.00001") ;
