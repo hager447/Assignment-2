@@ -30,5 +30,8 @@ BigReal(const BigReal& other);
  bool operator < (const BigReal& anotherReal);
     BigReal operator + ( const BigReal& anotherReal );
 BigReal operator - ( const BigReal& anotherReal );
+};
+
+#endif
 
 
