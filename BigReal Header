@@ -23,3 +23,6 @@ public:
  BigReal(string new_num , bool Sign ) ;
 BigReal(const BigReal& other);
     // Output Stream Operator
+ friend ostream& operator<<(ostream& out, const BigReal& num);
+    // Comparison Operators
+
