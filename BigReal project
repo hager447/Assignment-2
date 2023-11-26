@@ -95,5 +95,60 @@ bool BigReal::operator>(const BigReal &anotherReal) {
         }
     }
 }
+bool BigReal::operator<(const BigReal &anotherReal) {
+    if ( *this > anotherReal || *this == anotherReal ){
+        return false ;
+    }
+    return true ;
+}
+
+BigReal BigReal::operator+(const BigReal &anotherReal) {
+    pair<string,string> cmp = append_zero( INPUT , anotherReal.INPUT ) ;
+    string ans ;
+    if ( isNegative == anotherReal.isNegative ){
+        reverse( cmp.first.begin() , cmp.first.end() ) ;
+        reverse( cmp.second.begin() , cmp.second.end() ) ;
+        bool carry = false ;
+        for ( int i = 0 ; i < cmp.first.size() ; i++ ){
+            if ( cmp.first[i] == '.'){
+                ans.push_back('.') ;
+                continue;
+            }
+            int sum = carry ;
+            sum += cmp.first[i] - '0' ;
+            sum += cmp.second[i] - '0' ;
+            carry = false ;
+            if ( sum > 9 ) {
+                carry = true ;
+                sum -= 10 ;
+            }
+            ans.push_back((char)(sum + '0') ) ;
+        }
+        if ( carry ) ans.push_back('1') ;
+        reverse( ans.begin() , ans.end() ) ;
+        L_R_Strip( ans ) ;
+        return {  ans , isNegative } ;
+    } else {
+        bool sign = isNegative ;
+        if ( cmp.second.compare(cmp.first ) > 0 ){
+            swap( cmp.first , cmp.second ) ;
+            sign = !sign ;
+        }
+        reverse( cmp.first.begin() , cmp.first.end() ) ;
+        reverse( cmp.second.begin() , cmp.second.end() ) ;
+        bool carry = false ;
+        for ( int i = 0 ; i < cmp.first.size() ; i++ ){
+            if ( cmp.first[i] == '.'){
+                ans.push_back('.') ;
+                continue;
+            }
+            int sum = 0 - carry ;
+            sum += cmp.first[i] - '0' ;
+            sum -= cmp.second[i] - '0' ;
+            carry = false ;
+            if ( sum < 0 ){
+                carry = true ;
+                sum += 10 ;
+            }
 
 
