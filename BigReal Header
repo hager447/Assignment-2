@@ -27,5 +27,7 @@ BigReal(const BigReal& other);
     // Comparison Operators
   bool operator == (const BigReal& anotherReal);
     bool operator > (const BigReal& anotherReal);
+ bool operator < (const BigReal& anotherReal);
+    BigReal operator + ( const BigReal& anotherReal );
 
 
