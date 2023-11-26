@@ -31,5 +31,11 @@ BigReal::BigReal(const BigReal &other) {
     INPUT = other.INPUT ;
     isNegative = other.isNegative ;
 }
-
+bool BigReal ::isValidReal (string number){
+    if (count(number.begin(), number.end(),'.')>1||
+        count(number.begin(), number.end(),' ')>0||number[1]=='+'||number[1]=='-') {
+        return false ;
+    }
+    return true ;
+}
 
