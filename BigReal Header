@@ -8,3 +8,6 @@ class BigReal {
 private:
 
     string INPUT;
+bool isNegative ;
+    // Utility Functions
+    bool isValidReal(string realNumber);
