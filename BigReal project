@@ -27,3 +27,9 @@ BigReal::BigReal(string new_num, bool Sign) {
     INPUT = new_num ;
     isNegative = Sign ;
 }
+BigReal::BigReal(const BigReal &other) {
+    INPUT = other.INPUT ;
+    isNegative = other.isNegative ;
+}
+
+
