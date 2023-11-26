@@ -4,3 +4,7 @@ using namespace std;
 #include <string>
 #include <iostream>
 #include <algorithm>
+class BigReal {
+private:
+
+    string INPUT;
