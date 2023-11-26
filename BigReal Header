@@ -25,4 +25,7 @@ BigReal(const BigReal& other);
     // Output Stream Operator
  friend ostream& operator<<(ostream& out, const BigReal& num);
     // Comparison Operators
+  bool operator == (const BigReal& anotherReal);
+    bool operator > (const BigReal& anotherReal);
+
 
