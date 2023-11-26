@@ -49,3 +49,14 @@ void BigReal::L_R_Strip(string &text) {
         text = '0' + text ;
 }
 
+pair<string, string> BigReal::append_zero( string num1 , string num2 ) {
+    int app1_r = 0 , app2_r = 0 , app1_l = 0 , app2_l = 0 ;
+    app1_r = max(0, (int) ((num2.size() - num2.find('.')) - (num1.size() - num1.find('.'))));
+    app2_r = max(0, (int) ((num1.size() - num1.find('.')) - (num2.size() - num2.find('.'))));
+    app1_l = max(0, (int) (num2.find('.') - num1.find('.')));
+    app2_l = max(0, (int) (num1.find('.') - num2.find('.')));
+    num1 =  (string(app1_l , '0') + num1 + string(  app1_r , '0' )) ;
+    num2 =  (string(app2_l , '0') + num2 + string(  app2_r , '0' )) ;
+    return { num1 , num2 } ;
+}
+
