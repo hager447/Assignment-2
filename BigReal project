@@ -39,3 +39,13 @@ bool BigReal ::isValidReal (string number){
     return true ;
 }
 
+void BigReal::L_R_Strip(string &text) {
+    while ( text.back() == '0' )
+        text.pop_back() ;
+    int k = 0 ;
+    while ( text[k] == '0' ) k++ ;
+    text = text.substr(k) ;
+    if ( text.front() == '.' )
+        text = '0' + text ;
+}
+
