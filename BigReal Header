@@ -13,3 +13,7 @@ bool isNegative ;
     bool isValidReal(string realNumber);
  pair<string,string> append_zero( string num1 , string num2 ) ;
     void L_R_Strip( string &text ) ;
+
+public:
+    // Constructors
+    int size() ;
