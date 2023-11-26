@@ -17,3 +17,6 @@ bool isNegative ;
 public:
     // Constructors
     int size() ;
+ bool sign() ;
+    BigReal(double x = 0.0 );
+    BigReal(string realNumber);
