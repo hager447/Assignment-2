@@ -21,3 +21,5 @@ public:
     BigReal(double x = 0.0 );
     BigReal(string realNumber);
  BigReal(string new_num , bool Sign ) ;
+BigReal(const BigReal& other);
+    // Output Stream Operator
