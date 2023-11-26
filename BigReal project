@@ -23,3 +23,7 @@ BigReal::BigReal(string realNumber) {
     if (INPUT.find('.') == -1 )
         INPUT.push_back('.') ;
 }
+BigReal::BigReal(string new_num, bool Sign) {
+    INPUT = new_num ;
+    isNegative = Sign ;
+}
